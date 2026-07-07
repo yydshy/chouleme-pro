@@ -1,0 +1,38 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ===== PyInstaller 构建产物 =====
+build/
+dist/
+*.spec
+
+# ===== 本地配置与激活信息（含个人数据，切勿提交） =====
+*.ini
+*.json
+activation_info.json
+video_sampler_pro_config.ini
+
+# ===== FFmpeg 二进制（请单独下载，见 README） =====
+ffmpeg/
+ffmpeg.exe
+ffprobe.exe
+ffplay.exe
+ffmpeg-*.exe
+
+# ===== 旧版本 / 备份（不纳入仓库） =====
+clm3.0.py
+clm3.0.spec
+clm4.0.py
+clm4.0_pro.py
+*.bak
+
+# ===== 系统文件 =====
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Desktop.ini

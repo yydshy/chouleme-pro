@@ -1,0 +1,3 @@
+# 抽了么 Pro — Python 依赖
+# 安装：pip install -r requirements.txt
+customtkinter>=5.2.0
