@@ -40,7 +40,7 @@ chouleme            # 启动图形界面
 
 ### 方式二：直接下载 exe（适合普通用户，零环境）
 
-前往 [Releases](https://github.com/yydshy/chouleme-pro/releases) 下载 `ChouLeMe-Pro.exe`，双击即可运行，无需安装 Python。
+前往 [Releases](https://github.com/yydshy/chouleme-pro/releases) 下载 `chouleme_pro.exe`，双击即可运行，无需安装 Python。
 （首次运行前请确保已安装 FFmpeg 并加入 `PATH`，见下方「准备 FFmpeg」。）
 
 ### 方式三：从源码运行（开发 / 调试）
