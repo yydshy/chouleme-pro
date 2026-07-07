@@ -2176,9 +2176,10 @@ def run_pro_main():
         os.system("chcp 65001 >nul")
 
     if getattr(sys, 'frozen', False):
+        # 打包成 exe 时，配置/临时文件放在 exe 同目录，避免权限与路径问题
         os.chdir(os.path.dirname(sys.executable))
-    else:
-        os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    # 非冻结（源码运行 / pip 安装）模式：保持用户启动目录，
+    # 避免把 video_sampler_pro_config.ini 写进 site-packages 导致无权限
 
     app = BatchVideoSamplerPro()
     app.run()

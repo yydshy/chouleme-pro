@@ -26,20 +26,39 @@
 
 ## 📦 安装与运行
 
-### 1. 克隆仓库
+本项目提供三种使用方式，按需选择：
+
+### 方式一：pip 安装（适合开发者 / 技术用户）
 
 ```bash
-git clone https://github.com/<你的用户名>/chouleme-pro.git
+pip install chouleme-pro
+chouleme            # 启动图形界面
+```
+
+> 依赖（customtkinter 等）会自动安装。仍需系统已配置 FFmpeg（见下方「准备 FFmpeg」）。
+> 源码与 Issue 见 GitHub：https://github.com/yydshy/chouleme-pro
+
+### 方式二：直接下载 exe（适合普通用户，零环境）
+
+前往 [Releases](https://github.com/yydshy/chouleme-pro/releases) 下载 `ChouLeMe-Pro.exe`，双击即可运行，无需安装 Python。
+（首次运行前请确保已安装 FFmpeg 并加入 `PATH`，见下方「准备 FFmpeg」。）
+
+### 方式三：从源码运行（开发 / 调试）
+
+1. 克隆仓库
+
+```bash
+git clone https://github.com/yydshy/chouleme-pro.git
 cd chouleme-pro
 ```
 
-### 2. 安装 Python 依赖
+2. 安装依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. 准备 FFmpeg（二选一）
+3. 准备 FFmpeg（二选一）
 
 - **方式 A（推荐）**：把 `ffmpeg.exe` 和 `ffprobe.exe` 所在目录加入系统 `PATH`，程序会优先使用；
 - **方式 B**：运行下载脚本，自动放到 `ffmpeg/` 目录：
@@ -50,7 +69,7 @@ python scripts/download_ffmpeg.py
 
 > 也可以手动从 https://ffmpeg.org/download.html 下载 Windows 版，解压后将 `ffmpeg.exe`、`ffprobe.exe` 放入项目根目录的 `ffmpeg/` 文件夹。
 
-### 4. 启动
+4. 启动
 
 ```bash
 python chouleme_pro.py
@@ -58,16 +77,27 @@ python chouleme_pro.py
 
 ---
 
-## 🛠️ 打包为独立 exe（可选）
+## 🛠️ 打包构建（开发者参考）
 
-如需分发给无 Python 环境的用户，可用 PyInstaller 打包：
+### 构建 pip 包
+
+```bash
+python -m build
+# 产物在 dist/：*.whl 与 *.tar.gz（可用 pip install dist/*.whl 本地安装）
+```
+
+### 打包为独立 exe（PyInstaller）
 
 ```bash
 pip install pyinstaller
-pyinstaller --noconsole --onefile --add-data "ffmpeg;ffmpeg" chouleme_pro.py
+pyinstaller --noconsole --onefile ^
+  --name ChouLeMe-Pro ^
+  --collect-all customtkinter --collect-all tkinter ^
+  --hidden-import darkdetect --hidden-import PIL ^
+  chouleme_pro.py
 ```
 
-打包后 `dist/chouleme_pro.exe` 即为免安装版本（需将 ffmpeg 一并携带）。
+打包后 `dist/ChouLeMe-Pro.exe` 即为免安装版本（需系统已配置 FFmpeg，见上）。
 
 ---
 
@@ -76,6 +106,7 @@ pyinstaller --noconsole --onefile --add-data "ffmpeg;ffmpeg" chouleme_pro.py
 ```
 chouleme-pro/
 ├── chouleme_pro.py            # 主程序（单文件，全部逻辑）
+├── pyproject.toml             # pip 包 / 构建配置
 ├── requirements.txt           # Python 依赖
 ├── LICENSE                    # MIT 许可证
 ├── scripts/
