@@ -1,5 +1,8 @@
 # 抽了么 Pro（ChouLeMe Pro）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Made with ❤️](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red.svg)]()
+
 批量视频抽帧 + 智能去重的 Windows 桌面工具，基于 Python + CustomTkinter 打造，自带现代化暗色界面。
 
 > 本仓库为 **免费开源版**，无需激活即可使用全部功能。
